@@ -31,6 +31,7 @@ createApp({
     },
 
     methods: {
+
         goToNext() {
             this.activeItem++;
 
@@ -45,9 +46,15 @@ createApp({
                 this.activeItem = this.slides.length - 1;
             }
         },
+        pause(){
+            clearInterval(this.interval);
+        },
+        play(){
+            this.interval = setInterval(this.goToNext, 3000);
+        }
     },
 
     mounted() {
-        setInterval(this.goToNext, 3000);
+        this.play();
     },
 }).mount('#app')
