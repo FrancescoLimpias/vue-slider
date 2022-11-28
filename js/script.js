@@ -31,19 +31,23 @@ createApp({
     },
 
     methods: {
-        goToNext(){
+        goToNext() {
             this.activeItem++;
 
-            if(this.activeItem >= this.slides.length){
+            if (this.activeItem >= this.slides.length) {
                 this.activeItem = 0;
             }
         },
-        goToPrevious(){
+        goToPrevious() {
             this.activeItem--;
 
-            if(this.activeItem < 0){
+            if (this.activeItem < 0) {
                 this.activeItem = this.slides.length - 1;
             }
         },
-    }
+    },
+
+    mounted() {
+        setInterval(this.goToNext, 3000);
+    },
 }).mount('#app')
